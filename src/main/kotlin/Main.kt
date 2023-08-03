@@ -14,12 +14,37 @@ class EmployeeManager() {
             print("Address: ")
             val inAddress: String = readlnOrNull().toString()
 
+            if (inID == 0) {
+                println("ID should be more than 0 or not empty")
+                return
+            }
+
+            if (inName.isBlank() || inName.isEmpty()) {
+                println("Name should be filled")
+                return
+            }
+
+            if (inAddress.isBlank() || inAddress.isEmpty()) {
+                println("Address should be filled")
+                return
+            }
+
             val employee = Employee(inID, inName, inAddress)
             emp.add(employee)
         }
 
         fun remove() {
+            print("ID: ")
+            val inID: Int = readlnOrNull()?.toInt() ?: 0
 
+            if (inID == 0) {
+                println("ID should be more than 0 or not empty")
+                return
+            }
+
+            val employee: Employee? = emp.find { x -> x.id == inID }
+
+            emp.remove(employee)
         }
 
         fun edit() {
