@@ -42,13 +42,38 @@ class EmployeeManager() {
                 return
             }
 
-            val employee: Employee? = emp.find { x -> x.id == inID }
+            val employee: Employee? = emp.find { e -> e.id == inID }
 
             emp.remove(employee)
         }
 
         fun edit() {
+            print("ID: ")
+            val inID: Int = readlnOrNull()?.toInt() ?: 0
 
+            if (inID == 0) {
+                println("ID should be more than 0 or not empty")
+                return
+            }
+
+            var employee: Employee? = emp.find { e -> e.id == inID }
+
+            print("Name: ")
+            var inName: String = readlnOrNull().toString()
+
+            print("Address: ")
+            var inAddress: String = readlnOrNull().toString()
+
+            if (inName.isBlank()) {
+                inName = employee?.name.toString()
+            }
+
+            if (inAddress.isBlank()) {
+                inAddress = employee?.address.toString()
+            }
+
+            employee?.name = inName
+            employee?.address = inAddress
         }
 
         fun getEmployees(): MutableList<Employee> = emp
@@ -56,8 +81,6 @@ class EmployeeManager() {
 }
 
 fun main(args: Array<String>) {
-    val names: List<String> = listOf("Jamet", "Memet", "Rahmat")
-
     println("ThisCompany")
 
     while (true) {
