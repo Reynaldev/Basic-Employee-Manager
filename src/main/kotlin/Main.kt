@@ -42,7 +42,7 @@ class EmployeeManager() {
                 return
             }
 
-            val employee: Employee? = emp.find { e -> e.id == inID }
+            val employee: Employee? = emp.find { it.id == inID }
 
             emp.remove(employee)
         }
@@ -56,7 +56,7 @@ class EmployeeManager() {
                 return
             }
 
-            var employee: Employee? = emp.find { e -> e.id == inID }
+            var employee: Employee? = emp.find { it.id == inID }
 
             print("Name: ")
             var inName: String = readlnOrNull().toString()
