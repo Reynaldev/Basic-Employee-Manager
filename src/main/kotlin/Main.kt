@@ -87,8 +87,8 @@ fun main(args: Array<String>) {
         println("Employees")
 
         println("| ID | Name | Address |")
-        for (e in EmployeeManager.getEmployees()) {
-            println("| ${e.id} | ${e.name} | ${e.address} |")
+        EmployeeManager.getEmployees().forEach {
+            println("| ${it.id} | ${it.name} | ${it.address} |")
         }
 
         println("1) Add\n" +
